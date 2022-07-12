@@ -1,0 +1,2261 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/10/2022 1:51:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASUS"
+  DTS:CreatorName="ASUS\kevin"
+  DTS:DTSID="{608F734D-FBED-4F75-9FB1-9563F863E750}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DW FactInscripcion"
+  DTS:PackageType="5"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{E718D040-4724-48C2-9F79-C7AF64BB0B41}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source.Uagrm]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5EF3A551-7CC7-4424-9809-BE4869A4E917}"
+      DTS:ObjectName="Source.Uagrm">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Uagrm;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target.UagrmDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{99B00BC1-215C-4CE0-A6F8-162090E739BC}"
+      DTS:ObjectName="Target.UagrmDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=UagrmDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7E58A383-F40D-46FC-9B31-9EC9EEFC6A9A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DBTSValue">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{68E42408-20FB-44D3-BBBC-33D1C39CA5EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRowVersionValue">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Add new Inscripciones"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{083E1FBE-2DC6-452C-846D-F7D68E0774F6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Add new Inscripciones"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Add new Inscripciones\Add new Inscripcion"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Add new Inscripcion"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fact_inscripciones]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Add new Inscripcion.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[id_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[id_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[metodo_inscripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="metodo_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[metodo_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[metodo_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[sk_administrativo]"
+                      cachedDataType="i4"
+                      cachedName="sk_administrativo"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_administrativo]"
+                      lineageId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output].Columns[sk_administrativo]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[sk_carrera]"
+                      cachedDataType="i4"
+                      cachedName="sk_carrera"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_carrera]"
+                      lineageId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output].Columns[sk_carrera]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[sk_estudiante]"
+                      cachedDataType="i4"
+                      cachedName="sk_estudiante"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_estudiante]"
+                      lineageId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output].Columns[sk_estudiante]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[sk_grupo]"
+                      cachedDataType="i4"
+                      cachedName="sk_grupo"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_grupo]"
+                      lineageId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output].Columns[sk_grupo]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[id_detalle_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_detalle_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[id_detalle]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].Columns[fecha_inscripcion_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_inscripcion_key"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[inscripcion_data_key]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_grupo]"
+                      dataType="i4"
+                      name="sk_grupo" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[id_inscripcion]"
+                      dataType="i4"
+                      name="id_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[id_detalle]"
+                      dataType="i4"
+                      name="id_detalle" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[metodo_inscripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="metodo_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_estudiante]"
+                      dataType="i4"
+                      name="sk_estudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[inscripcion_data_key]"
+                      dataType="i4"
+                      name="inscripcion_data_key" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_carrera]"
+                      dataType="i4"
+                      name="sk_carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input].ExternalColumns[sk_administrativo]"
+                      dataType="i4"
+                      name="sk_administrativo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Add new Inscripcion.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Add new Inscripcion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Add new Inscripcion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Add new Inscripcion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Get Row Changes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Row Changes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE  [dbo].[GetInscripcionesChangesByRowVersion] ?, ?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"@startRow:Input",{68E42408-20FB-44D3-BBBC-33D1C39CA5EE};"@endRow:Input",{7E58A383-F40D-46FC-9B31-9EC9EEFC6A9A};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Get Row Changes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source.Uagrm]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source.Uagrm]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_grupo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_grupo]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_grupo]"
+                      name="id_grupo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]"
+                      name="id_inscripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_detalle_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]"
+                      name="id_detalle_inscripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_estudiante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_estudiante]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_estudiante]"
+                      name="id_estudiante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_carrera]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_carrera]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_carrera]"
+                      name="id_carrera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_administrativo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_administrativo]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_administrativo]"
+                      name="id_administrativo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[fecha_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion]"
+                      name="fecha_inscripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[fecha_inscripcion_key]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion_key]"
+                      name="fecha_inscripcion_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[metodo_inscripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[metodo_inscripcion]"
+                      length="50"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[metodo_inscripcion]"
+                      name="metodo_inscripcion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_grupo]"
+                      dataType="i4"
+                      name="id_grupo" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_inscripcion]"
+                      dataType="i4"
+                      name="id_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_detalle_inscripcion]"
+                      dataType="i4"
+                      name="id_detalle_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_estudiante]"
+                      dataType="i4"
+                      name="id_estudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_carrera]"
+                      dataType="i4"
+                      name="id_carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[id_administrativo]"
+                      dataType="i4"
+                      name="id_administrativo" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[fecha_inscripcion]"
+                      dataType="dbDate"
+                      name="fecha_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[fecha_inscripcion_key]"
+                      dataType="i4"
+                      name="fecha_inscripcion_key" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].ExternalColumns[metodo_inscripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="metodo_inscripcion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_inscripcion]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_inscripcion]"
+                      name="id_inscripcion" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_detalle_inscripcion]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_detalle_inscripcion]"
+                      name="id_detalle_inscripcion" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[fecha_inscripcion_key]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[fecha_inscripcion_key]"
+                      name="fecha_inscripcion_key" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_estudiante]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_estudiante]"
+                      name="id_estudiante" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_carrera]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_carrera]"
+                      name="id_carrera" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_administrativo]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_administrativo]"
+                      name="id_administrativo" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_grupo]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[id_grupo]"
+                      name="id_grupo" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[metodo_inscripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[metodo_inscripcion]"
+                      name="metodo_inscripcion" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[fecha_inscripcion]"
+                      dataType="dbDate"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[fecha_inscripcion]"
+                      name="fecha_inscripcion" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Load Staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[inscripciones]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Load Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[id_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[id_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[id_detalle_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_detalle_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[id_detalle]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[sk_estudiante]"
+                      cachedDataType="i4"
+                      cachedName="sk_estudiante"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_estudiante]"
+                      lineageId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output].Columns[sk_estudiante]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[sk_carrera]"
+                      cachedDataType="i4"
+                      cachedName="sk_carrera"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_carrera]"
+                      lineageId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output].Columns[sk_carrera]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[sk_administrativo]"
+                      cachedDataType="i4"
+                      cachedName="sk_administrativo"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_administrativo]"
+                      lineageId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output].Columns[sk_administrativo]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[metodo_inscripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="metodo_inscripcion"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[metodo_inscripcion]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[metodo_inscripcion]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[fecha_inscripcion_key]"
+                      cachedDataType="i4"
+                      cachedName="fecha_inscripcion_key"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[inscripcion_data_key]"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[fecha_inscripcion_key]" />
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].Columns[sk_grupo]"
+                      cachedDataType="i4"
+                      cachedName="sk_grupo"
+                      externalMetadataColumnId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_grupo]"
+                      lineageId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output].Columns[sk_grupo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_grupo]"
+                      dataType="i4"
+                      name="sk_grupo" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[id_inscripcion]"
+                      dataType="i4"
+                      name="id_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[id_detalle]"
+                      dataType="i4"
+                      name="id_detalle" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[metodo_inscripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="metodo_inscripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_estudiante]"
+                      dataType="i4"
+                      name="sk_estudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[inscripcion_data_key]"
+                      dataType="i4"
+                      name="inscripcion_data_key" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_carrera]"
+                      dataType="i4"
+                      name="sk_carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input].ExternalColumns[sk_administrativo]"
+                      dataType="i4"
+                      name="sk_administrativo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Load Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Load Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Load Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Load Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Lookup Administrativo"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Administrativo"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_administrativo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_administrativo]) [refTable]
+where [refTable].[sk_administrativo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sk_administrativo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_administrativo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_completo" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_administrativo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Lookup Administrativo.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input].Columns[id_administrativo]"
+                      cachedDataType="i4"
+                      cachedName="id_administrativo"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_administrativo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sk_administrativo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output].Columns[sk_administrativo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output].Columns[sk_administrativo]"
+                      name="sk_administrativo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sk_administrativo</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Lookup Carrera"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Carrera"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_carrera]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_carrera]) [refTable]
+where [refTable].[sk_carrera] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sk_carrera" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_carrera" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sigla" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre_facultad" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_carrera]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Lookup Carrera.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input].Columns[id_carrera]"
+                      cachedDataType="i4"
+                      cachedName="id_carrera"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_carrera]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sk_carrera</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output].Columns[sk_carrera]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output].Columns[sk_carrera]"
+                      name="sk_carrera"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sk_carrera</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Lookup Estudiante"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Estudiante"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_estudiante]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_estudiante]) [refTable]
+where [refTable].[sk_estudiante] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sk_estudiante" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_estudiante" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_completo" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_estudiante]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Lookup Estudiante.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input].Columns[id_estudiante]"
+                      cachedDataType="i4"
+                      cachedName="id_estudiante"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_estudiante]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sk_estudiante</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output].Columns[sk_estudiante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output].Columns[sk_estudiante]"
+                      name="sk_estudiante"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sk_estudiante</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Lookup Grupo"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Grupo"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_grupo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_grupo]) [refTable]
+where [refTable].[sk_grupo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="sk_grupo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_grupo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sigla" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="cupos" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_docente" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="nombre_materia" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_grupo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Lookup Grupo.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input].Columns[id_grupo]"
+                      cachedDataType="i4"
+                      cachedName="id_grupo"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_grupo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">sk_grupo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output].Columns[sk_grupo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output].Columns[sk_grupo]"
+                      name="sk_grupo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">sk_grupo</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Add new Inscripciones\Lookup Inscripciones"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Inscripciones"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[fact_inscripciones]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[fact_inscripciones]) [refTable]
+where [refTable].[id_inscripcion] = ? and [refTable].[id_detalle] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id_inscripcion" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_detalle" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="metodo_inscripcion" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="sk_estudiante" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="inscripcion_data_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sk_carrera" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sk_administrativo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sk_grupo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]};#{Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Add new Inscripciones\Lookup Inscripciones.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.UagrmDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.UagrmDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input].Columns[id_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_inscripcion"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_inscripcion]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_inscripcion</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input].Columns[id_detalle_inscripcion]"
+                      cachedDataType="i4"
+                      cachedName="id_detalle_inscripcion"
+                      lineageId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output].Columns[id_detalle_inscripcion]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id_detalle</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup Match Output]"
+              endId="Package\Add new Inscripciones\Load Staging.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup Match Output1]"
+              endId="Package\Add new Inscripciones\Lookup Carrera.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Add new Inscripciones\Lookup Administrativo.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup Match Output2]"
+              endId="Package\Add new Inscripciones\Lookup Estudiante.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Add new Inscripciones\Lookup Carrera.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup Match Output3]"
+              endId="Package\Add new Inscripciones\Lookup Grupo.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Add new Inscripciones\Lookup Estudiante.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup Match Output4]"
+              endId="Package\Add new Inscripciones\Lookup Inscripciones.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Add new Inscripciones\Lookup Grupo.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[Lookup No Match Output]"
+              endId="Package\Add new Inscripciones\Add new Inscripcion.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Add new Inscripciones\Lookup Inscripciones.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Add new Inscripciones.Paths[OLE DB Source Output]"
+              endId="Package\Add new Inscripciones\Lookup Administrativo.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Add new Inscripciones\Get Row Changes.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CleanUp Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EA23CEFC-34C7-4285-AC6D-CE6282965680}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CleanUp Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99B00BC1-215C-4CE0-A6F8-162090E739BC}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[inscripciones]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Database Version"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2656BBB7-CE7F-4B7B-B1D8-6C81C9A1C943}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Database Version"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5EF3A551-7CC7-4424-9809-BE4869A4E917}"
+          SQLTask:SqlStatementSource="EXEC [dbo].[GetDatabaseRowVersion]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="dbts"
+            SQLTask:DtsVariableName="User::DBTSValue" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Inscripciones RowVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{482784E4-3DDA-4997-92C6-B807118EC4C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Inscripciones RowVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99B00BC1-215C-4CE0-A6F8-162090E739BC}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'Inscripciones'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastRowVersion"
+            SQLTask:DtsVariableName="User::LastRowVersionValue" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sync Inscripciones Data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B30E9CC8-1EA0-4DB5-B8A2-E052BC30F23E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sync Inscripciones Data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99B00BC1-215C-4CE0-A6F8-162090E739BC}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeFactInscripciones]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update LastRowVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C4D4379F-F198-48EF-A98B-E9844CB8CCCF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update LastRowVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99B00BC1-215C-4CE0-A6F8-162090E739BC}"
+          SQLTask:SqlStatementSource="EXECUTE  [dbo].[UpdateLastPackageRowVersion] &#xA;   @tableName = 'Inscripciones'&#xA;  ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DBTSValue"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{963BBF30-AA5D-4C03-9848-31C72F7625B8}"
+      DTS:From="Package\Get Database Version"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Get Inscripciones RowVersion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{86971C42-7197-4ADC-8762-A920A4A4CD9A}"
+      DTS:From="Package\Get Inscripciones RowVersion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CleanUp Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{82ACBD9B-C466-44FE-8E8E-C9F7E2B39CF0}"
+      DTS:From="Package\CleanUp Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Add new Inscripciones" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B2784603-17D2-4858-968B-5F3B4B69DBA2}"
+      DTS:From="Package\Add new Inscripciones"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Sync Inscripciones Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{E6409CC6-B4E6-47B9-82AC-DB038EC04141}"
+      DTS:From="Package\Sync Inscripciones Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Update LastRowVersion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Add new Inscripciones"
+          TopLeft="287.142857142857,287.142857142857" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\CleanUp Staging"
+          TopLeft="288,207" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Get Database Version"
+          TopLeft="269,44" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Get Inscripciones RowVersion"
+          TopLeft="268,121" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Sync Inscripciones Data"
+          TopLeft="285.714285714286,358.571428571429" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Update LastRowVersion"
+          TopLeft="282,433" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="362.5,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,35"
+              Start="0,0"
+              End="18.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="14.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,17.5"
+                    Point2="18.5,17.5"
+                    Point3="18.5,21.5" />
+                  <mssgle:LineSegment
+                    End="18.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="381,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12,44"
+              Start="0,0"
+              End="-12,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-8,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8,22"
+                    Point2="-12,22"
+                    Point3="-12,26" />
+                  <mssgle:LineSegment
+                    End="-12,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="369,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.642857142857,38.142857142857"
+              Start="0,0"
+              End="12.642857142857,30.642857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0714285714285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0714285714285"
+                    Point2="0,19.0714285714285"
+                    Point3="4,19.0714285714285" />
+                  <mssgle:LineSegment
+                    End="8.642857142857,19.0714285714285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.642857142857,19.0714285714285"
+                    Point2="12.642857142857,19.0714285714285"
+                    Point3="12.642857142857,23.0714285714285" />
+                  <mssgle:LineSegment
+                    End="12.642857142857,30.642857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="382.928571428572,329.142857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.428571428572"
+              Start="0,0"
+              End="0,21.928571428572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.928571428572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="384.214285714286,400.571428571429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.214285714286,32.428571428571"
+              Start="0,0"
+              End="-17.214285714286,24.928571428571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2142857142855" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2142857142855"
+                    Point2="0,16.2142857142855"
+                    Point3="-4,16.2142857142855" />
+                  <mssgle:LineSegment
+                    End="-13.214285714286,16.2142857142855" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.214285714286,16.2142857142855"
+                    Point2="-17.214285714286,16.2142857142855"
+                    Point3="-17.214285714286,20.2142857142855" />
+                  <mssgle:LineSegment
+                    End="-17.214285714286,24.928571428571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Add new Inscripciones">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Add new Inscripciones\Load Staging"
+          TopLeft="65,530" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Add new Inscripciones\Get Row Changes"
+          TopLeft="215,35" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Add new Inscripciones\Lookup Inscripciones"
+          TopLeft="201,428" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Add new Inscripciones\Add new Inscripcion"
+          TopLeft="336,529" />
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup No Match Output]"
+          TopLeft="321,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.5,59"
+              Start="0,0"
+              End="103.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.9084967320261" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.9084967320261"
+                    Point2="0,23.9084967320261"
+                    Point3="4,23.9084967320261" />
+                  <mssgle:LineSegment
+                    End="99.5,23.9084967320261" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.5,23.9084967320261"
+                    Point2="103.5,23.9084967320261"
+                    Point3="103.5,27.9084967320261" />
+                  <mssgle:LineSegment
+                    End="103.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.05638671875,28.9084967320261,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup Match Output]"
+          TopLeft="263,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109.5,60"
+              Start="0,0"
+              End="-109.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3137254901961" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3137254901961"
+                    Point2="0,24.3137254901961"
+                    Point3="-4,24.3137254901961" />
+                  <mssgle:LineSegment
+                    End="-105.5,24.3137254901961" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105.5,24.3137254901961"
+                    Point2="-109.5,24.3137254901961"
+                    Point3="-109.5,28.3137254901961" />
+                  <mssgle:LineSegment
+                    End="-109.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-102.94138671875,29.3137254901961,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Add new Inscripciones\Lookup Administrativo"
+          TopLeft="206,111" />
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[OLE DB Source Output]"
+          TopLeft="299.5,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Add new Inscripciones\Lookup Carrera"
+          TopLeft="222,195" />
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup Match Output1]"
+          TopLeft="299.5,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Add new Inscripciones\Lookup Estudiante"
+          TopLeft="208,269" />
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup Match Output2]"
+          TopLeft="296.25,237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Add new Inscripciones\Lookup Grupo"
+          TopLeft="220,349" />
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup Match Output3]"
+          TopLeft="293.75,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add new Inscripciones.Paths[Lookup Match Output4]"
+          TopLeft="293.25,391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Load Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Get Row Changes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Lookup Inscripciones">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[fact_inscripciones]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Add new Inscripcion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Lookup Administrativo">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_administrativo]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Lookup Carrera">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_carrera]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Lookup Estudiante">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_estudiante]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add new Inscripciones\Lookup Grupo">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_grupo]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
